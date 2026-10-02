@@ -1,0 +1,24 @@
+{
+  "name": "lean-switchboard",
+  "owner": {
+    "name": "LeanZo",
+    "url": "https://github.com/LeanZo"
+  },
+  "metadata": {
+    "description": "Lean Switchboard, a Claude Code mod to turn plugins, connectors and skills on or off"
+  },
+  "plugins": [
+    {
+      "name": "lean-switchboard",
+      "source": "./plugins/lean-switchboard",
+      "description": "One list of every plugin, connector and skill in Claude Code, each with an on/off switch for new sessions",
+      "version": "0.1.0",
+      "author": {
+        "name": "LeanZo"
+      },
+      "homepage": "https://github.com/LeanZo/lean-switchboard",
+      "license": "MIT",
+      "keywords": ["mod", "plugins", "skills", "connectors", "mcp", "toggle"]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# Written by Claude Code when it loads a mod from a local folder
+plugins/*/.claude-plugin/types/
+plugins/*/tsconfig.json
+
+# Editor-only API types written by /plugin-types
+.claude/types/
