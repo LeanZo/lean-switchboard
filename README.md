@@ -4,6 +4,10 @@ A [Claude Code](https://code.claude.com) mod that puts **every plugin, connector
 
 No more digging through settings files, the `/plugin` menu, the connectors menu and `skillOverrides` to turn one thing off.
 
+<p align="center">
+  <img src="docs/switchboard-list.png" alt="The Lean Switchboard list in the Claude desktop app: filters at the top, then plugins and connectors, each with an On or Off switch" width="460">
+</p>
+
 ## What it does
 
 - **One list** of everything Claude Code can load:
@@ -41,6 +45,8 @@ Open the list either way:
 
 - Click **Lean Switchboard**, the small link at the right edge of the message box footer.
 - Or type `/lean-switchboard`.
+
+![The "Lean Switchboard" link in the footer under the message box, beside the model name](docs/footer-link.png)
 
 Then press **● On** or **○ Off** on any row. Close the list with **Close**, the link again, or Esc.
 

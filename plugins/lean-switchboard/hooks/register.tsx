@@ -178,10 +178,13 @@ async function loadPlugins($: Engine, dir: string, user: Settings): Promise<Swit
       const realMarketplace = marketplace === 'synced' ? (syncedMarketplace.get(name) ?? '') : marketplace
       const isAnthropic = ANTHROPIC_MARKETPLACES.has(realMarketplace) || realMarketplace.startsWith('anthropic')
       const manifest = row.installPath ? await readJson($, `${row.installPath}/.claude-plugin/plugin.json`) : undefined
+      // Loaded with --plugin-dir or CLAUDE_CODE_PLUGIN_DIRS (`name@inline`, or `inline[n]` when its folder is gone):
+      // no setting turns these off.
+      const isLocalFolder = row.scope === 'session' || marketplace === 'inline' || row.id.startsWith('inline')
       const source =
         marketplace === 'synced'
           ? isAnthropic ? 'From claude.ai (Anthropic)' : 'From claude.ai (your uploads)'
-          : marketplace === 'inline'
+          : isLocalFolder
             ? 'Local folder'
             : realMarketplace === 'claude-plugins-official'
               ? 'Anthropic marketplace'
@@ -198,7 +201,11 @@ async function loadPlugins($: Engine, dir: string, user: Settings): Promise<Swit
         isOn: row.enabled === true,
         scope: row.scope,
         hint: name === $.plugin.name ? 'This is Lean Switchboard itself. Turned off, new sessions lose this list.' : undefined,
-        lockReason: isManaged ? 'Set by your organization.' : undefined,
+        lockReason: isManaged
+          ? 'Set by your organization.'
+          : isLocalFolder
+            ? 'Loaded from a local folder (--plugin-dir or CLAUDE_CODE_PLUGIN_DIRS). Remove it there to turn it off.'
+            : undefined,
       }
 
       return item

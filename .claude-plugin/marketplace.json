@@ -12,7 +12,7 @@
       "name": "lean-switchboard",
       "source": "./plugins/lean-switchboard",
       "description": "One list of every plugin, connector and skill in Claude Code, each with an on/off switch for new sessions",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "LeanZo"
       },
